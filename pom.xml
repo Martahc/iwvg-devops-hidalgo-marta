@@ -13,7 +13,7 @@
     </parent>
 
     <artifactId>iwvg-devops-hidalgo-marta</artifactId>
-    <groupId>es.upm.miw</groupId>
+    <groupId>martahc-1</groupId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
