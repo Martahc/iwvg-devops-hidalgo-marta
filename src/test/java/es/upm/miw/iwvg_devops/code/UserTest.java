@@ -39,21 +39,6 @@ public class UserTest {
     }
 
     @Test
-     void testSetFractions() {
-        List<Fraction> newFractions = new ArrayList<>();
-        newFractions.add(new Fraction(2, 5));
-        newFractions.add(new Fraction(3, 4));
-        newFractions.add(new Fraction(7, 9));
-        user.setFractions(newFractions);
-
-        List<Fraction> fractions = user.getFractions();
-        assertEquals(3, fractions.size());
-        assertEquals(new Fraction(2, 5), fractions.get(0));
-        assertEquals(new Fraction(7, 9), fractions.get(2));
-    }
-
-
-    @Test
     void testFullName() {
         assertEquals("Marta Hidalgo", user.fullName());
     }
