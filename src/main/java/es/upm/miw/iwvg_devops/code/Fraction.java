@@ -57,6 +57,63 @@ public class Fraction {
         return (double) numerator / denominator;
     }
 
+    public boolean isProper (){
+        return this.numerator < this.denominator;
+    }
+
+    public boolean isImproper (){
+        return this.numerator > this.denominator;
+    }
+
+    public boolean isEquivalent(Fraction fraction2) {
+        return (this.numerator * fraction2.denominator) == (this.denominator * fraction2.numerator);
+    }
+
+    public Fraction add (Fraction fraction2){
+        Fraction resul;
+        if(this.denominator==fraction2.denominator){
+            int numeratorResul = this.numerator+fraction2.numerator;
+            resul= new Fraction(numeratorResul,this.denominator);
+        }
+        else{
+            int mcm = minimoComunMultiplo(this.denominator,fraction2.denominator);
+            int numerator1 = this.numerator * fraction2.getDenominator();
+            int numerator2 = fraction2.getNumerator() * this.denominator;
+            int numeratorResul = numerator1 + numerator2;
+            resul=  new Fraction(numeratorResul,mcm);
+
+        }
+        return resul;
+    }
+
+    private static int minimoComunMultiplo(int a, int b) {
+        int gcd = maximoComunDivisor(a, b);
+        return (a * b) / gcd;
+
+    }
+
+    private static int maximoComunDivisor(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    public Fraction multiply(Fraction fraction2){
+        int numeratorResul = this.numerator*fraction2.numerator;
+        int denominatorResul = this.denominator*fraction2.denominator;
+        return new Fraction(numeratorResul,denominatorResul);
+    }
+
+    public Fraction divide(Fraction fraction2){
+        int numeratorResul = this.numerator*fraction2.denominator;
+        int denominatorResul = this.denominator*fraction2.numerator;
+        return new Fraction(numeratorResul,denominatorResul);
+    }
+
+
     @Override
     public String toString() {
         return "Fraction{" +
