@@ -1,7 +1,6 @@
 package es.upm.miw.iwvg_devops.code;
 
-import es.upm.miw.iwvg_devops.code.UsersDatabase;
-import org.apache.logging.log4j.LogManager;
+
 
 import java.util.Objects;
 import java.util.stream.Stream;
@@ -16,6 +15,14 @@ public class Searches {
                 )
                 .map(Fraction::decimal);
     }
+
+    public Stream<String> findUserFamilyNameBySomeImproperFraction() {
+        return new UsersDatabase().findAll()
+                .filter(user -> user.getFractions().stream()
+                        .anyMatch(Fraction::isImproper))
+                .map(User::getFamilyName);
+    }
+
 
 
 
