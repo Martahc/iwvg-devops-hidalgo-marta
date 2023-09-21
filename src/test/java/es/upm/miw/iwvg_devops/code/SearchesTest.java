@@ -29,6 +29,13 @@ class SearchesTest {
                 .collect(Collectors.toList()));
     }
 
+    @Test
+    void testFindFractionDivisionByUserId(){
+        Fraction fractionExpected = new Fraction(120,-8);
+        Fraction fractionActual = new Searches().findFractionDivisionByUserId("2");
+        assertEquals(fractionExpected.getNumerator(), fractionActual.getNumerator());
+        assertEquals(fractionExpected.getDenominator(), fractionActual.getDenominator());
 
+    }
 
 }

@@ -34,7 +34,15 @@ public class Searches {
     }
 
 
-
+    public Fraction findFractionDivisionByUserId(String id){
+        return new UsersDatabase().findAll()
+                .filter(user -> id.equals(user.getId()))
+                .flatMap(user -> user.getFractions().stream()
+                        .filter(Objects::nonNull)
+                ).toList().stream()
+                .reduce((fraction1, fraction2) -> fraction1.divide(fraction2))
+                .orElseThrow();
+    }
 
 
 
